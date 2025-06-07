@@ -1,38 +1,93 @@
+body {
+  background-color: #f5e6c4;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  position: relative;
+}
+
+.hidden-webcam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.overlay-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 480px;
+  z-index: 10;
+}
+
+.eye-status {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  grid-template-rows: repeat(4, 60px);
+  gap: 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+.highlighted {
+  background: red;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.selected-item {
+  position: absolute;
+  top: 500px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+/* Add styles for the status display to be below the padding */
+.status {
+  position: absolute;
+  bottom: 20px;  /* Distance from the bottom of the screen, adjust as needed */
+  left: 20px;    /* Distance from the left edge of the screen */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background */
+  color: white;
+  border-radius: 8px;  /* Rounded corners for the status box */
+  font-size: 18px;     /* Adjust text size */
+  z-index: 10;         /* Ensure it stays on top */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.status p {
+  margin: 5px 0;  /* Adjust margin between lines of text */
 }
